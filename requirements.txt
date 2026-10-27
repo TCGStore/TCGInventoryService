@@ -1,0 +1,6 @@
+aio-pika==9.4.3
+grpcio==1.66.2
+grpcio-health-checking==1.66.2
+grpcio-reflection==1.66.2
+grpcio-tools==1.66.2
+redis==5.1.1
