@@ -10,7 +10,7 @@ install:
 
 # The "inventory/generated=" prefix makes the generated imports resolve as inventory.generated.*
 proto:
-	python -m grpc_tools.protoc -Iinventory/generated=../../proto \
+	python -m grpc_tools.protoc -Iinventory/generated=proto \
 		--python_out=. --grpc_python_out=. --pyi_out=. \
 		inventory/generated/inventory.proto
 

@@ -1,5 +1,0 @@
-# Used instead of a root .dockerignore because the build context is the repo root.
-**/__pycache__/
-**/generated/
-**/.venv/
-**/.pytest_cache/

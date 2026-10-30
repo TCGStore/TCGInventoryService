@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package tcgstore.inventory;
+
+// Reservations are not exposed here: they only happen through RabbitMQ events
+// (see events.md), so stock can't be reserved outside the order saga.
+service InventoryService {
+  rpc GetStock(GetStockRequest) returns (StockLevel);
+  rpc GetStocks(GetStocksRequest) returns (GetStocksResponse);
+  rpc SetStock(SetStockRequest) returns (StockLevel);
+}
+
+message StockLevel {
+  string product_id = 1;
+  int32 available = 2;  // Units that can still be bought.
+  int32 reserved = 3;   // Units held by orders waiting for payment.
+  bool low_stock = 4;
+}
+
+// Unknown products return available = 0 instead of NOT_FOUND.
+message GetStockRequest {
+  string product_id = 1;
+}
+
+message GetStocksRequest {
+  repeated string product_ids = 1;
+}
+
+message GetStocksResponse {
+  repeated StockLevel stocks = 1;
+}
+
+// Sets the available units; reserved units are left untouched.
+message SetStockRequest {
+  string product_id = 1;
+  int32 available = 2;
+}

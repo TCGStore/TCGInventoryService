@@ -28,7 +28,7 @@ tests/             pytest con fakeredis (un Redis falso en memoria, no necesita 
 ```
 
 El código gRPC se genera con `make proto` (local) o dentro del Dockerfile; la carpeta
-`generated/` está en el `.gitignore`. Por eso el Dockerfile se construye desde la raíz del repo.
+`generated/` está en el `.gitignore`.
 
 ## Cómo se guarda el stock en Redis
 
@@ -71,10 +71,10 @@ intercalar otros comandos**, así que el chequeo y el descuento son una sola ope
 Requisitos: Python 3.12 y Docker.
 
 ```bash
-# desde la raíz del repo
+# desde TCGBackend
 docker compose up -d redis rabbitmq
 
-# desde services/inventory-service
+# desde este repo
 python3.12 -m venv .venv && source .venv/bin/activate
 make install
 make seed    # stock inicial (se puede repetir: no pisa el stock existente)
@@ -82,7 +82,7 @@ make run     # genera el código gRPC y levanta el servidor en :50053
 make test
 ```
 
-O todo con Docker, desde la raíz:
+O todo con Docker, desde TCGBackend:
 
 ```bash
 docker compose up -d --build inventory-service
@@ -124,3 +124,9 @@ Para ver los eventos, abre el panel de RabbitMQ en <http://localhost:15672>
 - Los ids de producto son los de catalog-service; este servicio no valida que existan en el catálogo.
 - Los datos del seed son de demo: el Charizard ex NM parte con stock bajo, el Mew ex
   queda bajo con una venta y la booster box japonesa está agotada.
+
+## Contratos
+
+Los archivos de `proto/` son una **copia** de los de `TCGBackend/proto`, que es la fuente
+de verdad. No se editan aquí: el cambio se acuerda con el equipo, se hace en `TCGBackend` y
+se copia con `./scripts/sync-proto.sh` (desde TCGBackend).

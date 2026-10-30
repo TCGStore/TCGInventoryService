@@ -1,0 +1,20 @@
+# Secretos y variables de entorno (nunca al repo)
+.env
+.env.*
+!.env.example
+
+# Sistema / editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Código generado desde proto/
+**/generated/
