@@ -22,7 +22,7 @@ inventory/
   handlers.py      qué hacer con cada evento de la saga
   events.py        conexión a RabbitMQ: exchange, cola, publicar y consumir con ack manual
   grpc_server.py   los 3 RPCs del .proto
-  seed.py          stock inicial de los 17 productos de catalog-service
+  seed.py          stock inicial de 15 productos de catalog-service (cartas importadas y sellado)
   generated/       código generado desde el .proto (no se sube, ver abajo)
 tests/             pytest con fakeredis (un Redis falso en memoria, no necesita Docker)
 ```
