@@ -1,4 +1,6 @@
-"""Initial stock for the catalog-service demo products (same ids).
+"""Initial stock for some catalog-service products (same ids).
+
+Cards come from catalog-service's pokemontcg.io import and sealed products from its seed.
 
 Only fills products without stock, so running it again never undoes sales.
 """
@@ -12,7 +14,6 @@ from inventory.stock import StockStore
 
 INITIAL_STOCK = {
     "prd_mew_006_en_nm": 2,  # starts low, to show the low_stock flag
-    "prd_mew_006_en_lp": 3,
     "prd_mew_003_en_nm": 4,
     "prd_mew_009_en_nm": 4,
     "prd_mew_007_en_nm": 12,
@@ -20,10 +21,9 @@ INITIAL_STOCK = {
     "prd_mew_004_en_nm": 12,
     "prd_mew_025_en_nm": 10,
     "prd_mew_151_en_nm": 3,  # one sale away from stock.low
-    "prd_obf_125_en_psa10": 1,
+    "prd_obf_125_en_nm": 1,
     "prd_svi_191_en_nm": 20,
     "prd_svi_196_en_nm": 20,
-    "prd_sve_003_en_nm": 60,
     "prd_mew_etb_en": 6,
     "prd_obf_box_en": 4,
     "prd_obf_pack_en": 36,
